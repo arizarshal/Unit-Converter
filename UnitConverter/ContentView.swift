@@ -14,6 +14,11 @@ struct ContentView: View {
     @State private var inputUnit = "meter"
     @State private var outputUnit = "kilometer"
     
+//    computed property
+    var resultvalue: Double {
+        convertLength()
+    }
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -39,6 +44,7 @@ struct ContentView: View {
                 Section("Result Value"){
                     Text(convertLength(), format: .number)
                         .font(.title)
+                        .foregroundColor(resultvalue == 0 ? .red : .green)
                 }
             }
             .navigationTitle("Unit Converter")
